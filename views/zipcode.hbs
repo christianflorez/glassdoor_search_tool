@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <section class="col-md-8 col-md-offset-2">
+      <a href="/?zipCode={{zipcode}}&pageNumber={{prevPage}}"><p>Previous Page ({{prevPage}})</p></a>
+      <a href="/?zipCode={{zipcode}}&pageNumber={{nextPage}}"><p>Next Page ({{nextPage}})</p></a>
+
+      <h1>Results for {{zipcode}}</h1>
+      <ul class="employer-list">
+        {{#each employers as |employer|}}
+          <li class="each-employer">
+            <img src="{{employer.squareLogo}}" alt="" class="employer-img">
+            <h2>{{employer.name}}</h2>
+            <p>Rating: {{employer.overallRating}}</p>
+            <p>Number of Ratings: {{employer.numberOfRatings}}</p>
+            <p><a href="{{employer.featuredReview.attributionURL}}">Link to Reviews</a></p>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+  </div>
+</div>
