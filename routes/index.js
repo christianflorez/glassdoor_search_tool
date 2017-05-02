@@ -25,13 +25,12 @@ router.get('/', function(req, res, next) {
           results.push(employer);
         }
       });
-      console.log(data.employers[0]);
       res.render('zipcode', {
         pageNumber: pageNumber,
         nextPage: nextPage,
         prevPage: prevPage,
         zipcode: zipcode,
-        employers: results,
+        employers: results.length > 0 ? results : [{"error": "Nothing found on this page!", "overallRating": "N/A", "numberOfRatings": "N/A", "featuredReview": {"attributionURL": "#"}}],
         minRatings: minRatings,
         minReviews: minReviews
       });

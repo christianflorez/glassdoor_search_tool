@@ -14,6 +14,7 @@
       <h1>Results for {{zipcode}}</h1>
       <ul class="employer-list">
         {{#each employers as |employer|}}
+        {{employer.error}}
           <li class="each-employer">
             <img src="{{employer.squareLogo}}" alt="" class="employer-img">
             <h2>{{employer.name}}</h2>
