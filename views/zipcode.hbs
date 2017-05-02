@@ -3,15 +3,15 @@
     <section class="col-md-8 col-md-offset-2">
 
       <div class="row">
-        <div class="col-md-6">
-          <p><a href="/?zipCode={{zipcode}}&pageNumber={{prevPage}}&minRatings={{minRatings}}&minReviews={{minReviews}}">Previous Page ({{prevPage}})</a></p>
+        <div class="col-md-6 pagination">
+          <p><a class="pagination-btn" href="/?zipCode={{zipcode}}&pageNumber={{prevPage}}&minRatings={{minRatings}}&minReviews={{minReviews}}">Previous Page ({{prevPage}})</a></p>
         </div>
-        <div class="col-md-6">
-          <p><a href="/?zipCode={{zipcode}}&pageNumber={{nextPage}}&minRatings={{minRatings}}&minReviews={{minReviews}}">Next Page ({{nextPage}})</a></p>
+        <div class="col-md-6 pagination">
+          <p><a class="pagination-btn" href="/?zipCode={{zipcode}}&pageNumber={{nextPage}}&minRatings={{minRatings}}&minReviews={{minReviews}}">Next Page ({{nextPage}})</a></p>
         </div>
       </div>
 
-      <h1>Results for {{zipcode}}</h1>
+      <h2>Results for {{zipcode}}</h2>
       <ul class="employer-list">
         {{#each employers as |employer|}}
         {{employer.error}}

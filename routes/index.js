@@ -30,7 +30,14 @@ router.get('/', function(req, res, next) {
         nextPage: nextPage,
         prevPage: prevPage,
         zipcode: zipcode,
-        employers: results.length > 0 ? results : [{"error": "Nothing found on this page!", "overallRating": "N/A", "numberOfRatings": "N/A", "featuredReview": {"attributionURL": "#"}}],
+        employers: results.length > 0 ? results : [
+          {"error": "Nothing found on this page!", 
+          "overallRating": "N/A", 
+          "numberOfRatings": "N/A", 
+          "featuredReview": {
+            "attributionURL": "#"
+          }
+        }],
         minRatings: minRatings,
         minReviews: minReviews
       });
