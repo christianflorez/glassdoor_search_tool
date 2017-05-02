@@ -12,7 +12,6 @@ class Glassdoor {
 
   _sendRequest(path, callback) {
     var url = path;
-    console.log(url);
     request(url, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         callback(JSON.parse(body).response);

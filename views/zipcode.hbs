@@ -1,8 +1,15 @@
 <div class="container">
   <div class="row">
     <section class="col-md-8 col-md-offset-2">
-      <a href="/?zipCode={{zipcode}}&pageNumber={{prevPage}}"><p>Previous Page ({{prevPage}})</p></a>
-      <a href="/?zipCode={{zipcode}}&pageNumber={{nextPage}}"><p>Next Page ({{nextPage}})</p></a>
+
+      <div class="row">
+        <div class="col-md-6">
+          <p><a href="/?zipCode={{zipcode}}&pageNumber={{prevPage}}&minRatings={{minRatings}}&minReviews={{minReviews}}">Previous Page ({{prevPage}})</a></p>
+        </div>
+        <div class="col-md-6">
+          <p><a href="/?zipCode={{zipcode}}&pageNumber={{nextPage}}&minRatings={{minRatings}}&minReviews={{minReviews}}">Next Page ({{nextPage}})</a></p>
+        </div>
+      </div>
 
       <h1>Results for {{zipcode}}</h1>
       <ul class="employer-list">
@@ -10,6 +17,7 @@
           <li class="each-employer">
             <img src="{{employer.squareLogo}}" alt="" class="employer-img">
             <h2>{{employer.name}}</h2>
+            <h3>{{employer.industryName}}</h3>
             <p>Rating: {{employer.overallRating}}</p>
             <p>Number of Ratings: {{employer.numberOfRatings}}</p>
             <p><a href="{{employer.featuredReview.attributionURL}}">Link to Reviews</a></p>
@@ -17,5 +25,16 @@
         {{/each}}
       </ul>
     </section>
+    <div class="row">
+      <section class="col-md-8 col-md-offset-2 new-search">
+        <h2>New Search</h2>
+        <form action="/" method="get">
+            Zip Code <input type="text" name="zipCode" placeholder="eg... '20004'" maxlength="5"><br>
+            Minimum Number of Ratings: <input type="text" name="minRatings" placeholder="Default: 100" maxlength="7"><br>
+            Minimum Review Score: <input type="text" name="minReviews" placeholder="Default: 4" maxlength="3"><br>
+            <input type="submit" value="Search!">
+        </form>
+      </section>
+    </div>
   </div>
 </div>

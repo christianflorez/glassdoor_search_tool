@@ -14,12 +14,14 @@ router.get('/', function(req, res, next) {
     let userIP = ip.address();
     let useragent = req.headers["user-agent"];
     let zipcode = req.query.zipCode;
+    let minRatings = parseInt(req.query.minRatings) || 100;
+    let minReviews = parseFloat(req.query.minReviews) || 4.0;
     let glassdoor = new Glassdoor(userIP, useragent);
 
     glassdoor.getEmployersByZip(zipcode, pageNumber, (data) => {
       results = [];
       data.employers.forEach((employer) => {
-        if (employer.numberOfRatings >= 100 && employer.overallRating >= 4.0) {
+        if (employer.numberOfRatings >= minRatings && employer.overallRating >= minReviews) {
           results.push(employer);
         }
       });
@@ -29,7 +31,9 @@ router.get('/', function(req, res, next) {
         nextPage: nextPage,
         prevPage: prevPage,
         zipcode: zipcode,
-        employers: results
+        employers: results,
+        minRatings: minRatings,
+        minReviews: minReviews
       });
     });
   }
