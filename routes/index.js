@@ -2,6 +2,9 @@ const express = require('express');
 const ip = require('ip');
 const Glassdoor = require('../models/glassdoor.js');
 const router = express.Router();
+const RATINGS_DEFAULT = 100;
+const REVIEWS_DEFAULT = 4.0
+const FIRST_PAGE = 1;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,11 +17,12 @@ router.get('/', function(req, res, next) {
     let userIP = ip.address();
     let useragent = req.headers["user-agent"];
     let zipcode = req.query.zipCode;
-    let minRatings = parseInt(req.query.minRatings) || 100;
-    let minReviews = parseFloat(req.query.minReviews) || 4.0;
+    let keywords = req.query.keywords;
+    let minRatings = parseInt(req.query.minRatings) || RATINGS_DEFAULT;
+    let minReviews = parseFloat(req.query.minReviews) || REVIEWS_DEFAULT;
     let glassdoor = new Glassdoor(userIP, useragent);
 
-    glassdoor.getEmployersByZip(zipcode, pageNumber, (data) => {
+    glassdoor.getEmployersByZip(zipcode, pageNumber, keywords, (data) => {
       results = [];
       data.employers.forEach((employer) => {
         if (employer.numberOfRatings >= minRatings && employer.overallRating >= minReviews) {
