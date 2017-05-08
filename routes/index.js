@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
         zipcode: zipcode,
         employers: results.length > 0 ? results : [
           // provides default values when there are no results on the page
-          {"error": "Nothing found on this page!", 
+          {"error": "Apologies, we couldn't find anything on this page!", 
           "overallRating": "N/A", 
           "numberOfRatings": "N/A", 
           "featuredReview": {
